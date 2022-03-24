@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Preview from "../Preview";
 import classes from "./Slide.module.less";
 
+const imageUrls = ["planet", "airbaloon", "beach", "gradient", "paint"];
+
 const Slide = () => {
 	const [slideSelected, setSlideSelected] = useState<number>(0);
 	console.log(classes);
@@ -10,7 +12,14 @@ const Slide = () => {
 			<Preview setSlide={setSlideSelected} />
 			<div className={classes.main}>
 				<div className={classes.mainImage}>
-					<h1>Hello, slide {slideSelected} is selected.</h1>
+					<img
+						src={
+							new URL(
+								`../../styles/images/${imageUrls[slideSelected]}.jpg`,
+								import.meta.url
+							).href
+						}
+					/>
 				</div>
 				<div className={classes.mainText}>
 					<h2>Text here</h2>
