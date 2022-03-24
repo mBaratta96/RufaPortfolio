@@ -1,5 +1,5 @@
 import React from "react";
-import "./Preview.less";
+import classes from "./Preview.module.less";
 import { useSpring, animated } from "react-spring";
 
 type imageArray = Array<string>;
@@ -12,7 +12,12 @@ const imageUrls: imageArray = [
 	"paint",
 ];
 
-const Preview = (): JSX.Element => {
+interface previewProps {
+	setSlide: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const Preview = (props: previewProps): JSX.Element => {
+	const { setSlide } = props;
 	const previewContent = imageUrls.map(
 		(url: string, index: number): JSX.Element => {
 			const [{ scale }, set] = useSpring(() => ({
@@ -20,19 +25,20 @@ const Preview = (): JSX.Element => {
 				delay: 50,
 			}));
 			return (
-				<div key={index} className="Preview-image">
-					<animated.div style={{ scale }}>
+				<div key={index} className={classes.image}>
+					<animated.div style={{ scale }} className={classes.imageAnimation}>
 						<img
 							onMouseEnter={() => set({ scale: 1.1 })}
 							onMouseLeave={() => set({ scale: 1 })}
-							src={new URL("./beach.jpg", import.meta.url).href}
+							onClick={() => setSlide(index)}
+							src={new URL("./images/planet.jpg", import.meta.url).href}
 						></img>
 					</animated.div>
 				</div>
 			);
 		}
 	);
-	return <div className="Preview-root">{previewContent}</div>;
+	return <div className={classes.root}>{previewContent}</div>;
 };
 
 export default Preview;
