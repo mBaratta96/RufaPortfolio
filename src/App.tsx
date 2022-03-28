@@ -11,6 +11,17 @@ function App() {
 	const particlesOptions = {
 		preset: "stars",
 		background: { color: "" },
+		particles: {
+			move: {
+				speed: 10,
+				random: false,
+				direction: "bottom",
+				vibrate: true,
+				straight: true,
+			},
+			life: { duration: { value: 0.1 }, delay: { value: 0 } },
+			number: { density: { enable: false }, value: 5, limit: 10 },
+		},
 	};
 
 	return (
