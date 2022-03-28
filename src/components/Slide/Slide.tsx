@@ -1,20 +1,13 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import Preview from "../Preview";
 import classes from "./Slide.module.less";
-import Particles from "react-tsparticles";
-import type { Engine } from "tsparticles";
-import { loadStarsPreset } from "tsparticles-preset-stars";
 import { useTransition, animated, config } from "react-spring";
 
 const imageUrls = ["planet", "airbaloon", "beach", "gradient", "paint"];
-const translationPercentage = "10%";
+const translationPercentage = "50%";
 
 const Slide = () => {
 	const [slideSelected, setSlideSelected] = useState<number>(0);
-	const customInit = async (engine: Engine): Promise<void> => {
-		await loadStarsPreset(engine);
-	};
-	const particlesOptions = { preset: "stars" };
 	const imageTransition = useTransition(slideSelected, {
 		config: config.gentle,
 		from: {
@@ -29,35 +22,37 @@ const Slide = () => {
 		exitBeforeEnter: true,
 	});
 	return (
-		<Fragment>
-			<Particles />
-			<div className={classes.root}>
-				<Preview setSlide={setSlideSelected} />
-				<div className={classes.main}>
+		<div className={classes.root}>
+			<Preview setSlide={setSlideSelected} />
+			<div className={classes.main}>
+				<div className={classes.mainImage}>
 					{imageTransition((style, item) => {
+						console.log("item");
+						console.log(item);
 						return (
-							<animated.div className={classes.mainImage} style={style}>
-								<img
+							item == slideSelected && (
+								<animated.img
+									style={style}
 									src={
 										new URL(
 											`../../styles/images/${imageUrls[item]}.jpg`,
 											import.meta.url
 										).href
 									}
-								/>
-							</animated.div>
-						);
-					})}
-					{imageTransition((style, item) => {
-						return (
-							<animated.div style={style} className={classes.mainText}>
-								<h2>Name of image is {item}</h2>
-							</animated.div>
+								></animated.img>
+							)
 						);
 					})}
 				</div>
+				{imageTransition((style, item) => {
+					return (
+						<animated.div style={style} className={classes.mainText}>
+							<h2>Name of image is {item}</h2>
+						</animated.div>
+					);
+				})}
 			</div>
-		</Fragment>
+		</div>
 	);
 };
 
