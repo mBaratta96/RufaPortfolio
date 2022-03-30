@@ -4,13 +4,7 @@ import { useSpring, animated } from "react-spring";
 
 type imageArray = Array<string>;
 
-const imageUrls: imageArray = [
-	"planet",
-	"airbaloon",
-	"beach",
-	"gradient",
-	"paint",
-];
+const imageUrls: imageArray = ["planet", "airbaloon", "gradient", "paint"];
 
 interface previewProps {
 	setSlide: React.Dispatch<React.SetStateAction<number>>;

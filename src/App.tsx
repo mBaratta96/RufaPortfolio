@@ -1,32 +1,24 @@
 import React from "react";
 import Slide from "./components/Slide";
 import Particles from "react-tsparticles";
-import type { Engine } from "tsparticles";
+import type { Engine, ISourceOptions } from "tsparticles";
 import { loadStarsPreset } from "tsparticles-preset-stars";
+import { loadFireworksPreset } from "tsparticles-preset-fireworks";
+import particlesOptions from "./styles/particleOptions.json";
+import classes from "./App.module.less";
 
 function App() {
-	const customInit = async (engine: Engine): Promise<void> => {
-		await loadStarsPreset(engine);
+	const particlesInit = async (engine: Engine): Promise<void> => {
+		loadStarsPreset(engine);
+		loadFireworksPreset(engine);
 	};
-	const particlesOptions = {
-		preset: "stars",
-		background: { color: "" },
-		particles: {
-			move: {
-				speed: 10,
-				random: false,
-				direction: "bottom",
-				vibrate: true,
-				straight: true,
-			},
-			life: { duration: { value: 0.1 }, delay: { value: 0 } },
-			number: { density: { enable: false }, value: 5, limit: 10 },
-		},
-	};
-
 	return (
 		<div className="App">
-			<Particles options={particlesOptions} init={customInit} />
+			<Particles
+				options={particlesOptions as ISourceOptions}
+				init={particlesInit}
+				className={classes.background}
+			/>
 			<Slide />
 		</div>
 	);
