@@ -2,16 +2,15 @@ import React, { Fragment } from "react";
 import classes from "./Preview.module.less";
 import { useSpring, animated } from "react-spring";
 
-const imageUrls: Array<string> = ["planet", "airbaloon", "gradient", "paint"];
-
 interface previewProps {
 	setSlide: React.Dispatch<React.SetStateAction<number>>;
+	images: Array<string>;
 }
 
 const Preview = (props: previewProps): JSX.Element => {
-	const { setSlide } = props;
-	const previewContent = [...Array(10).keys()].map(
-		(index: number): JSX.Element => {
+	const { setSlide, images } = props;
+	const previewContent = images.map(
+		(image: string, index: number): JSX.Element => {
 			const [{ scale }, set] = useSpring(() => ({
 				scale: 1,
 				delay: 50,
@@ -25,14 +24,10 @@ const Preview = (props: previewProps): JSX.Element => {
 					onClick={() => setSlide(index)}
 					style={{ gridColumnStart: 2 + index }}
 				>
-					<animated.div style={{ scale }} className={classes.imageAnimation}>
-						<img
-							src={
-								new URL("../../styles/images/airbaloon.jpg", import.meta.url)
-									.href
-							}
-						></img>
-					</animated.div>
+					<animated.img
+						style={{ scale }}
+						src={new URL(image, import.meta.url).href}
+					></animated.img>
 				</div>
 			);
 		}

@@ -6,7 +6,12 @@ import { useTransition, animated, config } from "react-spring";
 const imageUrls = ["planet", "airbaloon", "beach", "gradient", "paint"];
 const translationPercentage = "50%";
 
-const Slide = () => {
+interface SlideProps {
+	images: Array<string>;
+}
+
+const Slide = (props: SlideProps) => {
+	const { images } = props;
 	const [slideSelected, setSlideSelected] = useState<number>(0);
 	const imageTransition = useTransition(slideSelected, {
 		config: config.gentle,
@@ -29,9 +34,7 @@ const Slide = () => {
 						item == slideSelected && (
 							<animated.img
 								style={style}
-								src={
-									new URL("../../styles/images/fruit.jpg", import.meta.url).href
-								}
+								src={new URL(images[slideSelected], import.meta.url).href}
 							></animated.img>
 						)
 					);
@@ -44,7 +47,7 @@ const Slide = () => {
 					</animated.div>
 				);
 			})}
-			<Preview setSlide={setSlideSelected} />
+			<Preview setSlide={setSlideSelected} images={images} />
 		</div>
 	);
 };

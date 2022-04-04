@@ -4,15 +4,18 @@ import Header from "./components/Header";
 import Particles from "react-tsparticles";
 import type { Engine, ISourceOptions } from "tsparticles";
 import { loadStarsPreset } from "tsparticles-preset-stars";
-import { loadFireworksPreset } from "tsparticles-preset-fireworks";
 import particlesOptions from "./styles/particleOptions.json";
 import classes from "./App.module.less";
+
+const images = [...Array(10).keys()].map(
+	(i) => new URL(`./styles/images/${i}.webp`, import.meta.url).href
+);
 
 function App() {
 	const particlesInit = async (engine: Engine): Promise<void> => {
 		loadStarsPreset(engine);
-		loadFireworksPreset(engine);
 	};
+	console.log(images);
 	return (
 		<div className={classes.root}>
 			<Header />
@@ -20,7 +23,7 @@ function App() {
 				init={particlesInit}
 				options={particlesOptions as ISourceOptions}
 			></Particles>
-			<Slide />
+			<Slide images={images} />
 		</div>
 	);
 }
