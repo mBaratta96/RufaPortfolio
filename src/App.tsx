@@ -13,11 +13,10 @@ function App() {
 		loadFireworksPreset(engine);
 	};
 	return (
-		<div className="App">
+		<div className={classes.root}>
 			<Particles
-				options={particlesOptions as ISourceOptions}
 				init={particlesInit}
-				className={classes.background}
+				options={particlesOptions as ISourceOptions}
 			/>
 			<Slide />
 		</div>

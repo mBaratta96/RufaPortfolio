@@ -3,15 +3,19 @@
 	"background": { "color": "" },
 	"particles": {
 		"move": {
-			"speed": 10,
-			"random": false,
-			"direction": "bottom",
-			"vibrate": true,
-			"straight": true
+			"speed": 0.1
 		},
-		"life": { "duration": { "value": 0.025 }, "delay": { "value": 0 } },
-		"number": { "density": { "enable": true }, "value": 5, "limit": 20 },
+		"number": { "density": { "enable": true }, "value": 250, "limit": 500 },
 		"shape": { "type": ["circle", "edge"] },
-		"size": { "value": 5, "random": true }
+		"size": { "value": 2, "random": true },
+		"color": { "value": "#000" },
+		"links": {
+			"enable": true,
+			"color": { "value": "#000" },
+			"frequency": 0.5,
+			"opacity": 0.2,
+			"width": 0.5,
+			"distance": 150
+		}
 	}
 }

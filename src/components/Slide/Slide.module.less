@@ -1,20 +1,13 @@
 @import "../../styles/variables.less";
 
 .root {
-	background: /*linear-gradient(
-			72.44deg,
-			@color-black 50%,
-			@color-black 50%,
-			@color-grey-gradient 100%
-		),
-		linear-gradient(107.56deg, @color-black 50%, @color-grey-gradient 100%);*/ @color-black;
 	height: 100%;
 	display: grid;
 	grid-template-columns: repeat(10, 1fr);
 	column-gap: 50px;
 }
 .main {
-	color: white;
+	color: @text-color;
 	grid-column-start: 3;
 	grid-column-end: 10;
 	display: grid;
