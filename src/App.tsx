@@ -1,5 +1,6 @@
 import React from "react";
 import Slide from "./components/Slide";
+import Header from "./components/Header";
 import Particles from "react-tsparticles";
 import type { Engine, ISourceOptions } from "tsparticles";
 import { loadStarsPreset } from "tsparticles-preset-stars";
@@ -14,10 +15,11 @@ function App() {
 	};
 	return (
 		<div className={classes.root}>
+			<Header />
 			<Particles
 				init={particlesInit}
 				options={particlesOptions as ISourceOptions}
-			/>
+			></Particles>
 			<Slide />
 		</div>
 	);

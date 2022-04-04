@@ -3,7 +3,7 @@
 	"background": { "color": "" },
 	"particles": {
 		"move": {
-			"speed": 0.1
+			"speed": 0.2
 		},
 		"number": { "density": { "enable": true }, "value": 250, "limit": 500 },
 		"shape": { "type": ["circle", "edge"] },
