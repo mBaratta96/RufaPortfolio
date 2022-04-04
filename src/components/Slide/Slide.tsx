@@ -23,33 +23,28 @@ const Slide = () => {
 	});
 	return (
 		<div className={classes.root}>
-			<Preview setSlide={setSlideSelected} />
-			<div className={classes.main}>
-				<div className={classes.mainImage}>
-					{imageTransition((style, item) => {
-						return (
-							item == slideSelected && (
-								<animated.img
-									style={style}
-									src={
-										new URL(
-											`../../styles/images/${imageUrls[item]}.jpg`,
-											import.meta.url
-										).href
-									}
-								></animated.img>
-							)
-						);
-					})}
-				</div>
+			<div className={classes.mainImage}>
 				{imageTransition((style, item) => {
 					return (
-						<animated.div style={style} className={classes.mainText}>
-							<h2>Name of image is {item}</h2>
-						</animated.div>
+						item == slideSelected && (
+							<animated.img
+								style={style}
+								src={
+									new URL("../../styles/images/fruit.jpg", import.meta.url).href
+								}
+							></animated.img>
+						)
 					);
 				})}
 			</div>
+			{imageTransition((style, item) => {
+				return (
+					<animated.div style={style} className={classes.mainText}>
+						<h2>Name of image is {item}</h2>
+					</animated.div>
+				);
+			})}
+			<Preview setSlide={setSlideSelected} />
 		</div>
 	);
 };

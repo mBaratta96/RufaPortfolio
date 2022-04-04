@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import classes from "./Preview.module.less";
 import { useSpring, animated } from "react-spring";
 
@@ -10,8 +10,8 @@ interface previewProps {
 
 const Preview = (props: previewProps): JSX.Element => {
 	const { setSlide } = props;
-	const previewContent = imageUrls.map(
-		(name: string, index: number): JSX.Element => {
+	const previewContent = [...Array(10).keys()].map(
+		(index: number): JSX.Element => {
 			const [{ scale }, set] = useSpring(() => ({
 				scale: 1,
 				delay: 50,
@@ -23,11 +23,13 @@ const Preview = (props: previewProps): JSX.Element => {
 					onMouseEnter={() => set({ scale: 1.1 })}
 					onMouseLeave={() => set({ scale: 1 })}
 					onClick={() => setSlide(index)}
+					style={{ gridColumnStart: 2 + index }}
 				>
 					<animated.div style={{ scale }} className={classes.imageAnimation}>
 						<img
 							src={
-								new URL(`../../styles/images/${name}.jpg`, import.meta.url).href
+								new URL("../../styles/images/airbaloon.jpg", import.meta.url)
+									.href
 							}
 						></img>
 					</animated.div>
@@ -35,7 +37,7 @@ const Preview = (props: previewProps): JSX.Element => {
 			);
 		}
 	);
-	return <div className={classes.root}>{previewContent}</div>;
+	return <Fragment>{previewContent}</Fragment>;
 };
 
 export default Preview;
