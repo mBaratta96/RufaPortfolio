@@ -27,8 +27,6 @@ const Slide = () => {
 			<div className={classes.main}>
 				<div className={classes.mainImage}>
 					{imageTransition((style, item) => {
-						console.log("item");
-						console.log(item);
 						return (
 							item == slideSelected && (
 								<animated.img

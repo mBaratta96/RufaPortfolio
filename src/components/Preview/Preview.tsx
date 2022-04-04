@@ -2,9 +2,7 @@ import React from "react";
 import classes from "./Preview.module.less";
 import { useSpring, animated } from "react-spring";
 
-type imageArray = Array<string>;
-
-const imageUrls: imageArray = ["planet", "airbaloon", "gradient", "paint"];
+const imageUrls: Array<string> = ["planet", "airbaloon", "gradient", "paint"];
 
 interface previewProps {
 	setSlide: React.Dispatch<React.SetStateAction<number>>;
