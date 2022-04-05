@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Preview from "../Preview";
 import classes from "./Slide.module.less";
 import { useTransition, animated, config } from "react-spring";
 
-const imageUrls = ["planet", "airbaloon", "beach", "gradient", "paint"];
 const translationPercentage = "50%";
 
 interface SlideProps {
@@ -25,6 +24,20 @@ const Slide = (props: SlideProps) => {
 			transform: `translate3d(${translationPercentage}, 0px, 0px)`,
 		},
 		exitBeforeEnter: true,
+	});
+	const handleArrowPress = (e: KeyboardEvent) => {
+		if (e.code === "ArrowLeft") {
+			setSlideSelected(Math.max(0, slideSelected - 1));
+		}
+		if (e.code === "ArrowRight") {
+			setSlideSelected(Math.min(9, slideSelected + 1));
+		}
+	};
+	useEffect(() => {
+		window.addEventListener("keydown", handleArrowPress);
+		return () => {
+			window.removeEventListener("keydown", handleArrowPress);
+		};
 	});
 	return (
 		<div className={classes.root}>

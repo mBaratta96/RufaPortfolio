@@ -15,11 +15,13 @@ function App() {
 	const particlesInit = async (engine: Engine): Promise<void> => {
 		loadStarsPreset(engine);
 	};
-	console.log(images);
 	return (
 		<div className={classes.root}>
 			<Header />
-			<Particles options={particlesOptions as ISourceOptions}></Particles>
+			<Particles
+				init={particlesInit}
+				options={particlesOptions as ISourceOptions}
+			></Particles>
 			<Slide images={images} />
 		</div>
 	);
