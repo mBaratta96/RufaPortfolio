@@ -19,10 +19,7 @@ function App() {
 	return (
 		<div className={classes.root}>
 			<Header />
-			<Particles
-				init={particlesInit}
-				options={particlesOptions as ISourceOptions}
-			></Particles>
+			<Particles options={particlesOptions as ISourceOptions}></Particles>
 			<Slide images={images} />
 		</div>
 	);
