@@ -1,3 +1,5 @@
+@import "/src/styles/variables.less";
+
 .root {
 	position: fixed;
     display: inline-flex;
@@ -6,4 +8,9 @@
     width: 100%;
     background-color: rgba(255, 255, 255, 0.5);
     z-index: 9;
+	a {
+		font-family: @default-font;
+		text-decoration: none;
+		color: @text-color;
+	}
 }
