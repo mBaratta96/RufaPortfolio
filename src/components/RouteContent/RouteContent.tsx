@@ -5,13 +5,23 @@ import Invoices from "../../routes/invoices";
 import { Routes, Route } from "react-router-dom";
 import classes from "./RouteContent.module.less";
 
-const RouteContent = () => {
+interface RouteContentProps {
+	handleChange: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const RouteContent = (props: RouteContentProps) => {
 	return (
 		<div className={classes.root}>
 			<Routes>
-				<Route path="/projects" element={<Expenses />} />
-				<Route path="/contact" element={<Invoices />} />
-				<Route path="/" element={<Home />} />
+				<Route
+					path="/projects"
+					element={<Expenses setTheme={props.handleChange} />}
+				/>
+				<Route
+					path="/contact"
+					element={<Invoices setTheme={props.handleChange} />}
+				/>
+				<Route path="/" element={<Home setTheme={props.handleChange} />} />
 				<Route
 					path="*"
 					element={

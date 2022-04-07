@@ -1,5 +1,10 @@
 {
-	"background": { "color": "", "size": "50%", "repeat": "no-repeat" },
+	"background": {
+		"color": "transparent",
+		"size": "50%",
+		"repeat": "no-repeat"
+	},
+	"fullscreen": { "enable": false },
 	"particles": {
 		"move": {
 			"speed": 0.2,
@@ -25,5 +30,19 @@
 		"reduceDuplicates": true
 	},
 	"presets": ["stars"],
-	"autoPlay": true
+	"autoPlay": true,
+	"themes": [
+		{
+			"name": "expenses",
+			"options": { "particles": { "color": { "value": "rgb(255,0,0)" } } }
+		},
+		{
+			"name": "invoices",
+			"options": { "particles": { "color": { "value": "rgb(0,255,0)" } } }
+		},
+		{
+			"name": "home",
+			"options": { "particles": { "color": { "value": "rgb(0,0,0)" } } }
+		}
+	]
 }

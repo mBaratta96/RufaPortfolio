@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const Invoices = () => {
+interface InvoicesProps {
+	setTheme: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Invoices = (props: InvoicesProps) => {
+	const { setTheme } = props;
+	useEffect(() => setTheme("invoices"));
 	return (
 		<main style={{ padding: "1rem 0" }}>
 			<h2>Invoices</h2>
