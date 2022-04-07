@@ -9,3 +9,12 @@
 .random(@min, @max) {
 	@random: `Math.round(Math.random() * (@{max} - @{min}) + @{min})`;
 }
+
+.fadeIn(@duration: 10s) {
+	animation: fadein @duration;
+}
+
+@keyframes fadein {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}

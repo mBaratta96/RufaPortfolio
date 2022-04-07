@@ -1,12 +1,13 @@
-import React, { Fragment } from "react";
+import React from "react";
 import Home from "../../routes/home";
 import Expenses from "../../routes/expenses";
 import Invoices from "../../routes/invoices";
 import { Routes, Route } from "react-router-dom";
+import classes from "./RouteContent.module.less";
 
 const RouteContent = () => {
 	return (
-		<Fragment>
+		<div className={classes.root}>
 			<Routes>
 				<Route path="/projects" element={<Expenses />} />
 				<Route path="/contact" element={<Invoices />} />
@@ -27,7 +28,7 @@ const RouteContent = () => {
 					}
 				/>
 			</Routes>
-		</Fragment>
+		</div>
 	);
 };
 

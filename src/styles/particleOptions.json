@@ -22,7 +22,8 @@
 			"width": 0.5,
 			"distance": 150
 		},
-		"reduceDuplicates": true,
-		"presets": ["stars"]
-	}
+		"reduceDuplicates": true
+	},
+	"presets": ["stars"],
+	"autoPlay": true
 }

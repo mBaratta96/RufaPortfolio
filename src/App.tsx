@@ -5,7 +5,7 @@ import type { Engine, ISourceOptions } from "tsparticles";
 import { loadStarsPreset } from "tsparticles-preset-stars";
 import particlesOptions from "./styles/particleOptions.json";
 import classes from "./App.module.less";
-import { Outlet } from "react-router-dom";
+import RouteContent from "./components/RouteContent";
 
 function App() {
 	const particlesInit = async (engine: Engine): Promise<void> => {
@@ -18,8 +18,9 @@ function App() {
 			<Particles
 				init={particlesInit}
 				options={particlesOptions as ISourceOptions}
+				className={classes.particles}
 			></Particles>
-			<Outlet />
+			<RouteContent />
 		</div>
 	);
 }
