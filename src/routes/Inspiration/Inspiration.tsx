@@ -1,11 +1,21 @@
 import React, { Fragment } from "react";
 import Slide from "../../components/Slide";
 
-const images = [...Array(10).keys()].map(() => {
+const images = [
+	"immortalStory",
+	"sacrifice",
+	"ninthConfiguration",
+	"immortalStory",
+	"immortalStory",
+	"immortalStory",
+	"immortalStory",
+	"immortalStory",
+	"immortalStory",
+	"immortalStory",
+].map((title) => {
 	return {
-		slide: new URL("./images/immortalStory.webp", import.meta.url).href,
-		preview: new URL("./images/immortalStoryPreview.webp", import.meta.url)
-			.href,
+		slide: new URL(`./images/${title}Slide.webp`, import.meta.url).href,
+		preview: new URL(`./images/${title}Preview.webp`, import.meta.url).href,
 	};
 });
 
