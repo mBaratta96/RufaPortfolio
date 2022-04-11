@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./Header.module.less";
 import { Link } from "react-router-dom";
 
-const pages = ["Home", "Projects", "Contact"];
+const pages = ["Home", "Projects", "Inspiration"];
 
 const Header = () => {
 	return (
