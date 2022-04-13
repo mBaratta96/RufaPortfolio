@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import Slide from "../../components/Slide";
+import filmData from "./content.csv";
 
 const images = [
 	"aparajito",
@@ -20,6 +21,7 @@ const images = [
 });
 
 const Inspiration = () => {
+	console.log(filmData);
 	return (
 		<Fragment>
 			<Slide images={images}></Slide>
