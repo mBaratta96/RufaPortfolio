@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import Slide from "../../components/Slide";
-import filmData from "./content.csv";
+import filmDataString from "./content.csv?raw";
+import Papa from "papaparse";
 
 const images = [
 	"aparajito",
@@ -20,13 +21,15 @@ const images = [
 	};
 });
 
-const Inspiration = () => {
+const filmData = Papa.parse(filmDataString, { header: true }).data;
+
+function Inspiration() {
 	console.log(filmData);
 	return (
 		<Fragment>
 			<Slide images={images}></Slide>
 		</Fragment>
 	);
-};
+}
 
 export default Inspiration;
