@@ -57,11 +57,12 @@ const Slide = (props: SlideProps) => {
 			{imageTransition((style, item) => {
 				return (
 					<animated.div style={style} className={classes.mainText}>
-						{content ? (
-							content[slideSelected]
-						) : (
-							<h2>Name of image is {item}</h2>
-						)}
+						{item == slideSelected &&
+							(content ? (
+								content[slideSelected]
+							) : (
+								<h2>Name of image is {item}</h2>
+							))}
 						<div className={classes.mainTextBorderLeft} />
 						<div className={classes.mainTextBorderTop} />
 						<div className={classes.mainTextBorderRight} />
