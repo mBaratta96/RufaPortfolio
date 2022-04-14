@@ -46,7 +46,11 @@ const Inspiration = () => {
 	));
 	return (
 		<Fragment>
-			<Slide images={images} content={filmList}></Slide>
+			<Slide
+				images={images}
+				content={filmList}
+				title="Some of my favorite works in cinema history, with a short review."
+			></Slide>
 		</Fragment>
 	);
 };

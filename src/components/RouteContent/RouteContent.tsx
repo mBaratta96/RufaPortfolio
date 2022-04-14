@@ -1,5 +1,5 @@
 import React from "react";
-import Home from "../../routes/home";
+import Home from "../../routes/Home";
 import Expenses from "../../routes/expenses";
 import { Routes, Route } from "react-router-dom";
 import classes from "./RouteContent.module.less";

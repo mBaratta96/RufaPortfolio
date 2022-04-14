@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
-import Slide from "../components/Slide";
+import Slide from "../../components/Slide";
 
 const images = [...Array(10).keys()].map((i) => {
-	return { slide: new URL(`../styles/images/${i}.webp`, import.meta.url).href };
+	return { slide: new URL(`./images/${i}.webp`, import.meta.url).href };
 });
 
 const Home = () => {

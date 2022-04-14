@@ -8,10 +8,11 @@ const translationPercentage = "50%";
 interface SlideProps {
 	images: Array<{ slide: string; preview?: string }>;
 	content?: Array<JSX.Element>;
+	title?: string;
 }
 
 const Slide = (props: SlideProps) => {
-	const { images, content } = props;
+	const { images, content, title } = props;
 	const [slideSelected, setSlideSelected] = useState<number>(0);
 	const imageTransition = useTransition(slideSelected, {
 		config: config.gentle,
@@ -42,6 +43,9 @@ const Slide = (props: SlideProps) => {
 	});
 	return (
 		<div className={classes.root}>
+			<div className={classes.mainTitle}>
+				<h2>{title ?? "Title goes here"}</h2>
+			</div>
 			<div className={classes.mainImage}>
 				{imageTransition((style, item) => {
 					return (

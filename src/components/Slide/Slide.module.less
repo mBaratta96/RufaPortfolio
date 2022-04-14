@@ -23,8 +23,6 @@
 	}
 
 	&Text {
-		font-family: @default-font;
-		color: @text-color;
 		grid-column-start: 8;
 		grid-column-end: 12;
 		grid-row-end: 9;
@@ -33,7 +31,7 @@
 		margin: 20px;
 		padding-left: 20px;
 		padding-right: 20px;
-		border-radius: 20px;
+		border-radius: 5px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -85,5 +83,10 @@
 		p {
 			font-size: 18px;
 		}
+	}
+	&Title {
+		grid-row-start: 2;
+		grid-column-start: 2;
+		grid-column-end: 12;
 	}
 }
