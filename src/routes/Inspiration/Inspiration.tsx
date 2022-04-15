@@ -3,13 +3,13 @@ import Slide from "../../components/Slide";
 import filmDataString from "./content.csv?raw";
 import Papa from "papaparse";
 import _ from "underscore";
-import plots from "./plots.json";
 
 interface filmDataType {
 	index: string;
 	title: string;
 	director: string;
 	year: string;
+	review?: string;
 }
 
 const images = [
@@ -41,7 +41,7 @@ const Inspiration = () => {
 			<h2>{data.title}</h2>
 			<h2>{data.director}</h2>
 			<h2>{data.year}</h2>
-			<p>{plots[index].plot}</p>
+			<p>{data.review}</p>
 		</Fragment>
 	));
 	return (
