@@ -7,6 +7,7 @@
 @text-area-ornament-color: rgb(124, 124, 124);
 @text-area-background-color: #f0f8ff96;
 @default-font: Alice, serif;
+@border-style: 2px dashed @text-area-ornament-color;
 
 .random(@min, @max) {
 	@random: `Math.round(Math.random() * (@{max} - @{min}) + @{min})`;
@@ -37,5 +38,4 @@
 	color:@text-area-ornament-color;
 }
 
-@border-style: 2px dashed @text-area-ornament-color;
 
