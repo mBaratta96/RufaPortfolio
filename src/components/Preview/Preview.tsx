@@ -7,8 +7,16 @@ interface previewProps {
 	images: Array<string>;
 }
 
+const maxNumItems = 10;
+const columnOffset = 2;
+
+const getInitialColumn = (imagesLength: number): number => {
+	return maxNumItems / 2 - imagesLength / 2 + columnOffset;
+};
+
 const Preview = (props: previewProps): JSX.Element => {
 	const { setSlide, images } = props;
+	const initialColumn = getInitialColumn(images.length);
 	const previewContent = images.map(
 		(image: string, index: number): JSX.Element => {
 			const [{ scale }, set] = useSpring(() => ({
@@ -22,7 +30,9 @@ const Preview = (props: previewProps): JSX.Element => {
 					onMouseEnter={() => set({ scale: 1.1 })}
 					onMouseLeave={() => set({ scale: 1 })}
 					onClick={() => setSlide(index)}
-					style={{ gridColumnStart: 2 + index }}
+					style={{
+						gridColumnStart: initialColumn + index,
+					}}
 				>
 					<animated.img
 						style={{ scale }}

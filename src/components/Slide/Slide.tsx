@@ -63,7 +63,9 @@ const Slide = (props: SlideProps) => {
 					<animated.div style={style} className={classes.mainText}>
 						{item == slideSelected &&
 							(content ? (
-								content[slideSelected]
+								<div className={classes.mainTextWrapper}>
+									{content[slideSelected]}
+								</div>
 							) : (
 								<h2>Name of image is {item}</h2>
 							))}

@@ -1,14 +1,22 @@
 import React, { Fragment } from "react";
 import Slide from "../../components/Slide";
+import lorem from "./lorem.txt?raw";
 
 const images = [...Array(10).keys()].map((i) => {
 	return { slide: new URL(`./images/${i}.webp`, import.meta.url).href };
 });
 
+const content = [...Array(10).keys()].map(() => lorem);
+
 const Home = () => {
 	return (
 		<Fragment>
-			<Slide images={images} />
+			<Slide
+				content={content.map((item, index) => (
+					<p key={index}>{item}</p>
+				))}
+				images={images}
+			/>
 		</Fragment>
 	);
 };

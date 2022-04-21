@@ -37,6 +37,22 @@
 		justify-content: center;
 		outline: solid 24px @text-area-background-color;
 		position: relative;
+		&Wrapper {
+			overflow-y: auto;
+			scrollbar-width: thin;
+			scrollbar-color: @text-area-ornament-color #c5c3c600;
+			&::-webkit-scrollbar {
+				width: 12px;
+			}
+			&::-webkit-scrollbar-thumb {
+				background-color: @text-area-ornament-color;
+				border-radius: 20px;
+				border: 5px solid #d5d4d5;
+			}
+			&::-webkit-scrollbar-track {
+				background: #d5d4d5;
+			}
+		}
 		&Border {
 			&Left {
 				&::after {

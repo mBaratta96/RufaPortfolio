@@ -13,10 +13,10 @@
 		},
 		"shape": { "type": ["circle", "edge"] },
 		"size": { "value": 2, "random": true },
-		"color": { "value": "#000" },
+		"color": { "value": "#4C5C68" },
 		"links": {
 			"enable": true,
-			"color": { "value": "#000" },
+			"color": { "value": "#1985A1" },
 			"frequency": 0.5,
 			"opacity": 0.2,
 			"width": 0.5,
