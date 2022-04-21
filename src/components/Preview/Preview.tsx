@@ -11,12 +11,14 @@ const maxNumItems = 10;
 const columnOffset = 2;
 
 const getInitialColumn = (imagesLength: number): number => {
-	return maxNumItems / 2 - imagesLength / 2 + columnOffset;
+	return Math.floor(maxNumItems / 2 - imagesLength / 2 + columnOffset);
 };
 
 const Preview = (props: previewProps): JSX.Element => {
 	const { setSlide, images } = props;
 	const initialColumn = getInitialColumn(images.length);
+	console.log("COLUMN START");
+	console.log(initialColumn);
 	const previewContent = images.map(
 		(image: string, index: number): JSX.Element => {
 			const [{ scale }, set] = useSpring(() => ({

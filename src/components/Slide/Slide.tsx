@@ -6,7 +6,7 @@ import { useTransition, animated, config } from "react-spring";
 const translationPercentage = "50%";
 
 interface SlideProps {
-	images: Array<{ slide: string; preview?: string }>;
+	images: Array<{ slide: JSX.Element; preview: string }>;
 	content?: Array<JSX.Element>;
 	title?: string;
 }
@@ -46,18 +46,15 @@ const Slide = (props: SlideProps) => {
 			<div className={classes.mainTitle}>
 				<h2>{title ?? "Title goes here"}</h2>
 			</div>
-			<div className={classes.mainImage}>
-				{imageTransition((style, item) => {
-					return (
-						item == slideSelected && (
-							<animated.img
-								style={style}
-								src={new URL(images[slideSelected].slide, import.meta.url).href}
-							></animated.img>
-						)
-					);
-				})}
-			</div>
+			{imageTransition((style, item) => {
+				return (
+					item == slideSelected && (
+						<animated.div className={classes.mainImage} style={style}>
+							{images[slideSelected].slide}
+						</animated.div>
+					)
+				);
+			})}
 			{imageTransition((style, item) => {
 				return (
 					<animated.div style={style} className={classes.mainText}>
@@ -78,7 +75,7 @@ const Slide = (props: SlideProps) => {
 			})}
 			<Preview
 				setSlide={setSlideSelected}
-				images={images.map((image) => image.preview ?? image.slide)}
+				images={images.map((image) => image.preview)}
 			/>
 		</div>
 	);

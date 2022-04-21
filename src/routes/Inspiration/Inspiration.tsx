@@ -25,7 +25,9 @@ const images = [
 	"womanUnderInfluence",
 ].map((title) => {
 	return {
-		slide: new URL(`./images/${title}Slide.webp`, import.meta.url).href,
+		slide: (
+			<img src={new URL(`./images/${title}Slide.webp`, import.meta.url).href} />
+		),
 		preview: new URL(`./images/${title}Preview.webp`, import.meta.url).href,
 	};
 });
