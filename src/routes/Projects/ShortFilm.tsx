@@ -4,6 +4,7 @@ import VideoJS from "../../components/VideoJS";
 import caroAmico from "./videos/caro_amico_(teaser).mp4";
 import preview from "./images/preview.png";
 import Slide from "../../components/Slide";
+import classes from "./Projects.module.less";
 
 const ShortFilm = () => {
 	const playerRef = useRef<null | VideoJsPlayer>(null);
@@ -40,7 +41,24 @@ const ShortFilm = () => {
 	});
 	return (
 		<Fragment>
-			<Slide media={videos}></Slide>
+			<Slide
+				media={videos}
+				title={
+					<Fragment>
+						Some clips from my short film Caro Amico, inspired by the
+						correspondence between Gustav Mahler and Richard Strauss. Full movie{" "}
+						<a
+							target="_blank"
+							rel="noreferrer noopener"
+							className={classes.link}
+							href="https://vimeo.com/401617585"
+						>
+							here
+						</a>
+						.
+					</Fragment>
+				}
+			></Slide>
 		</Fragment>
 	);
 	return <div>Projects</div>;

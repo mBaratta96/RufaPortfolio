@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSpring, animated } from "react-spring";
+import { useSpring, animated, config } from "react-spring";
 import classes from "./Header.module.less";
 
 interface HeaderLinkProps {
@@ -18,6 +18,7 @@ const HeaderLink = (props: HeaderLinkProps) => {
 	const { title, route, submenu } = props;
 	const [{ backgroundColor }, setColor] = useSpring(() => ({
 		backgroundColor: defaultColor,
+		config: config.stiff,
 	}));
 	const AnimatedLink = animated(Link);
 	return (

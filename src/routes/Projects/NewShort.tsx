@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { FountainParser, IParserOptions } from "screenplay-js";
 import testScript from "./fountain/test.fountain?raw";
-import classes from "./NewShort.module.less";
+import classes from "./Projects.module.less";
 import Slide from "../../components/Slide";
 
 const scriptClasses = [
@@ -48,16 +48,20 @@ const NewShort = () => {
 			title={
 				<Fragment>
 					Mirrorland - A collection of shot ideas for my new short film. Follow
-					these links for full scripts (
+					these links for the complete scripts (
 					<a
-						className={classes.scriptLink}
+						className={classes.link}
+						target="_blank"
+						rel="noreferrer noopener"
 						href="https://drive.google.com/file/d/1ua87R9Hru6LHG-lzxUMEjm09tn4xXE8A/view?usp=sharing"
 					>
 						ITA
 					</a>
 					/
 					<a
-						className={classes.scriptLink}
+						className={classes.link}
+						target="_blank"
+						rel="noreferrer noopener"
 						href="https://drive.google.com/file/d/1sHXwyvsPBU8TkDXmcrVFqGqJHewbjSqo/view?usp=sharing"
 					>
 						ENG
