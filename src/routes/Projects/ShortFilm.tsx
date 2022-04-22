@@ -43,6 +43,7 @@ const ShortFilm = () => {
 		<Fragment>
 			<Slide
 				media={videos}
+				content={[<h2 key={0}>Caro Amico</h2>]}
 				title={
 					<Fragment>
 						Some clips from my short film Caro Amico, inspired by the

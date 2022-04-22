@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import Preview from "../Preview";
 import classes from "./Slide.module.less";
 import { useTransition, animated, config } from "react-spring";
+import TextArea from "../TextArea";
 
 const translationPercentage = "50%";
 
 interface SlideProps {
 	media: Array<{ slide: JSX.Element; preview: string }>;
-	content?: Array<JSX.Element>;
+	content: Array<JSX.Element>;
 	title?: string | JSX.Element;
 }
 
@@ -41,6 +42,7 @@ const Slide = (props: SlideProps) => {
 			window.removeEventListener("keydown", handleArrowPress);
 		};
 	});
+
 	return (
 		<div className={classes.root}>
 			<div className={classes.mainTitle}>
@@ -57,20 +59,13 @@ const Slide = (props: SlideProps) => {
 			})}
 			{imageTransition((style, item) => {
 				return (
-					<animated.div style={style} className={classes.mainText}>
-						{item == slideSelected &&
-							(content ? (
-								<div className={classes.mainTextWrapper}>
-									{content[slideSelected]}
-								</div>
-							) : (
-								<h2>Name of image is {item}</h2>
-							))}
-						<div className={classes.mainTextBorderLeft} />
-						<div className={classes.mainTextBorderTop} />
-						<div className={classes.mainTextBorderRight} />
-						<div className={classes.mainTextBorderBottom} />
-					</animated.div>
+					item == slideSelected && (
+						<TextArea
+							springStyle={style}
+							content={content[slideSelected]}
+							className={classes.mainText}
+						/>
+					)
 				);
 			})}
 			<Preview

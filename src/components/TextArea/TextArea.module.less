@@ -1,0 +1,76 @@
+@import "/src/styles/variables.less";
+
+.root {
+	background-color: @text-area-background-color;
+	margin: 24px;
+	padding-left: 24px;
+	padding-right: 24px;
+	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	outline: solid 24px @text-area-background-color;
+	position: relative;
+	.wrapper {
+		overflow-y: auto;
+		scrollbar-width: thin;
+		scrollbar-color: @text-area-ornament-color #c5c3c600;
+		&::-webkit-scrollbar {
+			width: 12px;
+		}
+		&::-webkit-scrollbar-thumb {
+			background-color: @text-area-ornament-color;
+			border-radius: 20px;
+			border: 5px solid #d5d4d5;
+		}
+		&::-webkit-scrollbar-track {
+			background: #d5d4d5;
+		}
+	}
+	.border {
+		&Left {
+			&::after {
+				.border-position(@top: 10%);
+				height: 80%;
+				border-left: @border-style;
+			}
+			&::before {
+				.corner-position();
+			}
+		}
+		&Top {
+			&::after {
+				.border-position(@left: 10%);
+				width: 80%;
+				border-top: @border-style;
+			}
+			&::before {
+				.corner-position(@left: 100%, @transform: translateX(-1em));
+			}
+		}
+		&Bottom {
+			&::after {
+				.border-position(@top: 100%, @left: 10%);
+				width: 80%;
+				border-bottom: @border-style;
+			}
+			&::before {
+				.corner-position(@top: 100%, @transform: translateY(-1em));
+			}
+		}
+		&Right {
+			&::after {
+				height: 80%;
+				.border-position(@top: 10%, @left:100%);
+				border-right: @border-style;
+			}
+			&::before {
+				.corner-position(@top: 100%, @left:100%, @transform: translate(-1em, -1em));
+			}
+		}
+	}
+
+	p {
+		font-size: 18px;
+	}
+}
