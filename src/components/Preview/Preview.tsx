@@ -17,8 +17,6 @@ const getInitialColumn = (imagesLength: number): number => {
 const Preview = (props: previewProps): JSX.Element => {
 	const { setSlide, images } = props;
 	const initialColumn = getInitialColumn(images.length);
-	console.log("COLUMN START");
-	console.log(initialColumn);
 	const previewContent = images.map(
 		(image: string, index: number): JSX.Element => {
 			const [{ scale }, set] = useSpring(() => ({

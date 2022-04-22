@@ -8,7 +8,7 @@ const translationPercentage = "50%";
 interface SlideProps {
 	media: Array<{ slide: JSX.Element; preview: string }>;
 	content?: Array<JSX.Element>;
-	title?: string;
+	title?: string | JSX.Element;
 }
 
 const Slide = (props: SlideProps) => {

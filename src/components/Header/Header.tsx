@@ -1,32 +1,24 @@
 import React, { useState } from "react";
 import classes from "./Header.module.less";
-import { Link } from "react-router-dom";
+import HeaderLink from "./HeaderLink";
 
 const Header = () => {
 	const [displayProjects, setDisplayProjects] = useState(false);
 	const projects = displayProjects && (
 		<div className={classes.projects}>
-			<Link to="/caroAmico">
-				<h4>Caro Amico</h4>
-			</Link>
-			<Link to="wip">
-				<h4>WIP</h4>
-			</Link>
+			<HeaderLink title="Caro Amico" submenu={true} />
+			<HeaderLink title="WIP" submenu={true} />
 		</div>
 	);
 	return (
 		<div className={classes.root}>
-			<Link to="/">
-				<h3>Home</h3>
-			</Link>
-			<Link to="/inspiration">
-				<h3>Inspiration</h3>
-			</Link>
+			<HeaderLink title="Home" route="" />
+			<HeaderLink title="Inspiration" />
 			<div
 				onMouseOver={() => setDisplayProjects(true)}
 				onMouseLeave={() => setDisplayProjects(false)}
 			>
-				<h3>Projects</h3>
+				<h3 style={{ marginLeft: "10px" }}>Projects</h3>
 				{projects}
 			</div>
 		</div>

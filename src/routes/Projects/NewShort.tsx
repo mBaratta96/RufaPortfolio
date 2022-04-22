@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { FountainParser, IParserOptions } from "screenplay-js";
 import testScript from "./fountain/test.fountain?raw";
 import classes from "./NewShort.module.less";
@@ -20,15 +20,14 @@ const script = (() => {
 		.script_html as string;
 	return scriptClasses.reduce(
 		(previous, current) =>
-			previous.replaceAll(`"${current}"`, classes[current]),
+			classes[current]
+				? previous.replaceAll(`"${current}"`, classes[current])
+				: previous,
 		script
 	);
 })();
 
 const NewShort = () => {
-	console.log(classes);
-	console.log(script);
-
 	return (
 		<Slide
 			media={[
@@ -46,6 +45,26 @@ const NewShort = () => {
 					key={0}
 				/>,
 			]}
+			title={
+				<Fragment>
+					Mirrorland - A collection of shot ideas for my new short film. Follow
+					these links for full scripts (
+					<a
+						className={classes.scriptLink}
+						href="https://drive.google.com/file/d/1ua87R9Hru6LHG-lzxUMEjm09tn4xXE8A/view?usp=sharing"
+					>
+						ITA
+					</a>
+					/
+					<a
+						className={classes.scriptLink}
+						href="https://drive.google.com/file/d/1sHXwyvsPBU8TkDXmcrVFqGqJHewbjSqo/view?usp=sharing"
+					>
+						ENG
+					</a>
+					)
+				</Fragment>
+			}
 		/>
 	);
 };
