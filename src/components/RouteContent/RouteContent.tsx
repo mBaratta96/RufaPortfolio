@@ -9,7 +9,8 @@ const RouteContent = () => {
 	return (
 		<div className={classes.root}>
 			<Routes>
-				<Route path="/projects" element={<Projects />} />
+				<Route path="/caroAmico" element={<Projects.ShortFilm />} />
+				<Route path="/wip" element={<Projects.NewShort />} />
 				<Route path="/inspiration" element={<Inspiration />} />
 				<Route path="/" element={<Home />} />
 				<Route
