@@ -25,7 +25,7 @@ const ShortFilm = () => {
 		const videoJsOptions = {
 			controls: true,
 			responsive: true,
-			fluid: true,
+			fill: true,
 			sources: [
 				{
 					src: path,
@@ -40,7 +40,7 @@ const ShortFilm = () => {
 	});
 	return (
 		<Fragment>
-			<Slide images={videos}></Slide>
+			<Slide media={videos}></Slide>
 		</Fragment>
 	);
 	return <div>Projects</div>;

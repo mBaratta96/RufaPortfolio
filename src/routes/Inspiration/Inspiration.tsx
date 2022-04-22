@@ -26,7 +26,10 @@ const images = [
 ].map((title) => {
 	return {
 		slide: (
-			<img src={new URL(`./images/${title}Slide.webp`, import.meta.url).href} />
+			<img
+				src={new URL(`./images/${title}Slide.webp`, import.meta.url).href}
+				style={{ width: "100%" }}
+			/>
 		),
 		preview: new URL(`./images/${title}Preview.webp`, import.meta.url).href,
 	};
@@ -49,7 +52,7 @@ const Inspiration = () => {
 	return (
 		<Fragment>
 			<Slide
-				images={images}
+				media={images}
 				content={filmList}
 				title="Some of my favorite works in cinema history, with a short review."
 			></Slide>

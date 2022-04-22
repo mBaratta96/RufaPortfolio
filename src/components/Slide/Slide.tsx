@@ -6,13 +6,13 @@ import { useTransition, animated, config } from "react-spring";
 const translationPercentage = "50%";
 
 interface SlideProps {
-	images: Array<{ slide: JSX.Element; preview: string }>;
+	media: Array<{ slide: JSX.Element; preview: string }>;
 	content?: Array<JSX.Element>;
 	title?: string;
 }
 
 const Slide = (props: SlideProps) => {
-	const { images, content, title } = props;
+	const { media, content, title } = props;
 	const [slideSelected, setSlideSelected] = useState<number>(0);
 	const imageTransition = useTransition(slideSelected, {
 		config: config.gentle,
@@ -50,7 +50,7 @@ const Slide = (props: SlideProps) => {
 				return (
 					item == slideSelected && (
 						<animated.div className={classes.mainImage} style={style}>
-							{images[slideSelected].slide}
+							{media[slideSelected].slide}
 						</animated.div>
 					)
 				);
@@ -75,7 +75,7 @@ const Slide = (props: SlideProps) => {
 			})}
 			<Preview
 				setSlide={setSlideSelected}
-				images={images.map((image) => image.preview)}
+				images={media.map((image) => image.preview)}
 			/>
 		</div>
 	);

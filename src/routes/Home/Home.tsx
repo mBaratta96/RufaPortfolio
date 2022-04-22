@@ -18,7 +18,7 @@ const Home = () => {
 				content={content.map((item, index) => (
 					<p key={index}>{item}</p>
 				))}
-				images={images}
+				media={images}
 			/>
 		</Fragment>
 	);

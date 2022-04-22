@@ -7,10 +7,10 @@ const Header = () => {
 	const projects = displayProjects && (
 		<div className={classes.projects}>
 			<Link to="/caroAmico">
-				<h3>Caro Amico</h3>
+				<h4>Caro Amico</h4>
 			</Link>
 			<Link to="wip">
-				<h3>WIP</h3>
+				<h4>WIP</h4>
 			</Link>
 		</div>
 	);

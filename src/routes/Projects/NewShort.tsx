@@ -2,6 +2,7 @@ import React from "react";
 import { FountainParser, IParserOptions } from "screenplay-js";
 import testScript from "./fountain/test.fountain?raw";
 import classes from "./NewShort.module.less";
+import Slide from "../../components/Slide";
 
 const scriptClasses = [
 	"scene-heading",
@@ -27,10 +28,24 @@ const script = (() => {
 const NewShort = () => {
 	console.log(classes);
 	console.log(script);
+
 	return (
-		<div
-			dangerouslySetInnerHTML={{ __html: script }}
-			className={classes.root}
+		<Slide
+			media={[
+				{
+					slide: (
+						<img src={new URL("./images/joined.webp", import.meta.url).href} />
+					),
+					preview: new URL("./images/joined.webp", import.meta.url).href,
+				},
+			]}
+			content={[
+				<div
+					className={classes.root}
+					dangerouslySetInnerHTML={{ __html: script }}
+					key={0}
+				/>,
+			]}
 		/>
 	);
 };
