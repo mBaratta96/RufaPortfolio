@@ -23,12 +23,10 @@ const TextArea = (props: TextAreaProps) => {
 		</Fragment>
 	);
 	const rootClass = `${className ? className + " " : ""}${classes.root}`;
-	return springStyle ? (
+	return (
 		<animated.div style={springStyle} className={rootClass}>
 			{children}
 		</animated.div>
-	) : (
-		<div className={rootClass}>{children}</div>
 	);
 };
 

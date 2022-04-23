@@ -16,14 +16,7 @@ const RouteContent = () => {
 				<Route
 					path="*"
 					element={
-						<div
-							style={{
-								display: "flex",
-								height: "100%",
-								alignItems: "center",
-								justifyContent: "center",
-							}}
-						>
+						<div className={classes.error}>
 							<h3>Oops... seems you are in the wrong place</h3>
 						</div>
 					}
