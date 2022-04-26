@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { FountainParser, IParserOptions } from "screenplay-js";
+import synopsys from "./fountain/synopsys.fountain?raw";
 import scene1Script from "./fountain/scene1.fountain?raw";
 import scene2Script from "./fountain/scene2.fountain?raw";
 import classes from "./Projects.module.less";
@@ -14,11 +15,9 @@ const scriptClasses = [
 ];
 
 const parseScript = (scriptString: string) => {
-	const parserOptions = {
+	const script = FountainParser.parse(scriptString, {
 		script_html: true,
-	} as IParserOptions;
-	const script = FountainParser.parse(scriptString, parserOptions)
-		.script_html as string;
+	} as IParserOptions).script_html as string;
 	return scriptClasses.reduce(
 		(previous, current) =>
 			classes[current]
@@ -28,18 +27,20 @@ const parseScript = (scriptString: string) => {
 	);
 };
 
-const content = [scene1Script, scene2Script].map((scriptString, index) => {
-	const script = parseScript(scriptString);
-	return (
-		<div
-			key={index}
-			className={classes.root}
-			dangerouslySetInnerHTML={{ __html: script }}
-		></div>
-	);
-});
+const content = [synopsys, scene1Script, scene2Script].map(
+	(scriptString, index) => {
+		const script = parseScript(scriptString);
+		return (
+			<div
+				key={index}
+				className={classes.root}
+				dangerouslySetInnerHTML={{ __html: script }}
+			></div>
+		);
+	}
+);
 
-const media = ["scene1", "scene2"].map((item) => {
+const media = ["synopsys", "scene1", "scene2"].map((item) => {
 	return {
 		slide: <img src={new URL(`./images/${item}.webp`, import.meta.url).href} />,
 		preview: new URL(`./images/${item}.webp`, import.meta.url).href,
