@@ -35,20 +35,19 @@ const images = [
 	};
 });
 
-const filmData = _.sortBy(
+const filmList = _.sortBy(
 	Papa.parse(filmDataString, { header: true }).data as Array<filmDataType>,
 	["index"]
-);
+).map((data, index) => (
+	<Fragment key={index}>
+		<h2>{data.title}</h2>
+		<h2>{data.director}</h2>
+		<h2>{data.year}</h2>
+		<p>{data.review}</p>
+	</Fragment>
+));
 
 const Inspiration = () => {
-	const filmList = filmData.map((data, index) => (
-		<Fragment key={index}>
-			<h2>{data.title}</h2>
-			<h2>{data.director}</h2>
-			<h2>{data.year}</h2>
-			<p>{data.review}</p>
-		</Fragment>
-	));
 	return (
 		<Fragment>
 			<Slide

@@ -2,6 +2,29 @@ import React from "react";
 import { FiGithub, FiLinkedin, FiInstagram } from "react-icons/fi";
 import classes from "./Home.module.less";
 import TextArea from "../../components/TextArea";
+import { Link } from "react-router-dom";
+import Papa from "papaparse";
+import contentString from "./content.csv?raw";
+import _ from "underscore";
+
+interface contentType {
+	index: string;
+	header: string;
+	link: string;
+	description: string;
+}
+
+const links = _.sortBy(
+	Papa.parse(contentString, { header: true }).data as Array<contentType>,
+	["index"]
+).map((row, index) => (
+	<p key={index}>
+		<Link to={`/${row.link}`} className={classes.textHeader}>
+			{row.header}
+		</Link>{" "}
+		— {row.description}
+	</p>
+));
 
 const Home = () => {
 	const content = (
@@ -10,11 +33,7 @@ const Home = () => {
 			<h2 style={{ textAlign: "center" }}>
 				RUFA - MA in Film Arts 2022 - Portfolio
 			</h2>
-
-			<p>
-				<span className={classes.textHeader}>My inspirations: </span>A list of
-				work that has inspired me to become a filmaker.
-			</p>
+			<div className={classes.textLinks}>{links}</div>
 			<div className={classes.contact}>
 				<div className={classes.social}>
 					<a href="https://github.com/mBaratta96">
