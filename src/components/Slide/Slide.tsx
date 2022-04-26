@@ -26,7 +26,7 @@ const Slide = (props: SlideProps) => {
 			opacity: 0,
 			transform: `translate3d(${translationPercentage}, 0px, 0px)`,
 		},
-		exitBeforeEnter: true,
+		exitBeforeEnter: false,
 	});
 	const handleArrowPress = (e: KeyboardEvent) => {
 		if (e.code === "ArrowLeft" && slideSelected > 0) {
@@ -60,18 +60,15 @@ const Slide = (props: SlideProps) => {
 			{imageTransition((style, item) => {
 				return (
 					item == slideSelected && (
-						<TextArea
-							springStyle={style}
-							content={content[slideSelected]}
-							className={classes.mainText}
-						/>
+						<TextArea springStyle={style} className={classes.mainText}>
+							{content[slideSelected]}
+						</TextArea>
 					)
 				);
 			})}
-			<Preview
-				setSlide={setSlideSelected}
-				images={media.map((image) => image.preview)}
-			/>
+			<Preview setSlide={setSlideSelected}>
+				{media.map((image) => image.preview)}
+			</Preview>
 		</div>
 	);
 };

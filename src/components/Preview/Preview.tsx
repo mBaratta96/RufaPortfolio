@@ -4,7 +4,7 @@ import { useSpring, animated } from "react-spring";
 
 interface previewProps {
 	setSlide: React.Dispatch<React.SetStateAction<number>>;
-	images: Array<string>;
+	children: Array<string>;
 }
 
 const maxNumItems = 10;
@@ -15,7 +15,7 @@ const getInitialColumn = (imagesLength: number): number => {
 };
 
 const Preview = (props: previewProps): JSX.Element => {
-	const { setSlide, images } = props;
+	const { setSlide, children: images } = props;
 	const initialColumn = getInitialColumn(images.length);
 	const previewContent = images.map(
 		(image: string, index: number): JSX.Element => {

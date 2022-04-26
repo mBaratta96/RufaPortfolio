@@ -33,6 +33,9 @@ const Home = () => {
 			<h2 style={{ textAlign: "center" }}>
 				RUFA - MA in Film Arts 2022 - Portfolio
 			</h2>
+			<p style={{ textAlign: "center", fontStyle: "italic" }}>
+				I have a sentimental inclination towards hope - Orson Welles
+			</p>
 			<div className={classes.textLinks}>{links}</div>
 			<div className={classes.contact}>
 				<div className={classes.social}>
@@ -53,7 +56,7 @@ const Home = () => {
 	return (
 		<div className={classes.root}>
 			<div className={classes.textWrapper}>
-				<TextArea content={content} />
+				<TextArea>{content}</TextArea>
 			</div>
 		</div>
 	);

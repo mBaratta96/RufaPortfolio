@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { FountainParser, IParserOptions } from "screenplay-js";
-import testScript from "./fountain/test.fountain?raw";
+// import scene1Script from "./fountain/scene1.fountain?raw";
+import scene2Script from "./fountain/scene2.fountain?raw";
 import classes from "./Projects.module.less";
 import Slide from "../../components/Slide";
 
@@ -12,11 +13,11 @@ const scriptClasses = [
 	"parenthetical",
 ];
 
-const script = (() => {
+const parseScript = (scriptString: string) => {
 	const parserOptions = {
 		script_html: true,
 	} as IParserOptions;
-	const script = FountainParser.parse(testScript, parserOptions)
+	const script = FountainParser.parse(scriptString, parserOptions)
 		.script_html as string;
 	return scriptClasses.reduce(
 		(previous, current) =>
@@ -25,26 +26,31 @@ const script = (() => {
 				: previous,
 		script
 	);
-})();
+};
+
+const content = [scene2Script].map((scriptString, index) => {
+	const script = parseScript(scriptString);
+	return (
+		<div
+			key={index}
+			className={classes.root}
+			dangerouslySetInnerHTML={{ __html: script }}
+		></div>
+	);
+});
+
+const media = ["scene2"].map((item) => {
+	return {
+		slide: <img src={new URL(`./images/${item}.webp`, import.meta.url).href} />,
+		preview: new URL(`./images/${item}.webp`, import.meta.url).href,
+	};
+});
 
 const NewShort = () => {
 	return (
 		<Slide
-			media={[
-				{
-					slide: (
-						<img src={new URL("./images/joined.webp", import.meta.url).href} />
-					),
-					preview: new URL("./images/joined.webp", import.meta.url).href,
-				},
-			]}
-			content={[
-				<div
-					className={classes.root}
-					dangerouslySetInnerHTML={{ __html: script }}
-					key={0}
-				/>,
-			]}
+			media={media}
+			content={content}
 			title={
 				<Fragment>
 					Mirrorland - A collection of shot ideas for my new short film. Follow

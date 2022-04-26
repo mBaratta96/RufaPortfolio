@@ -6,14 +6,14 @@ const Header = () => {
 	const [displayProjects, setDisplayProjects] = useState(false);
 	const projects = displayProjects && (
 		<div className={classes.projects}>
-			<HeaderLink title="Caro Amico" submenu={true} />
-			<HeaderLink title="WIP" submenu={true} />
+			<HeaderLink submenu={true}>Caro Amico</HeaderLink>
+			<HeaderLink submenu={true}>WIP</HeaderLink>
 		</div>
 	);
 	return (
 		<div className={classes.root}>
-			<HeaderLink title="Home" route="" />
-			<HeaderLink title="Inspiration" />
+			<HeaderLink route="">Home</HeaderLink>
+			<HeaderLink>Inspiration</HeaderLink>
 			<div
 				onMouseOver={() => setDisplayProjects(true)}
 				onMouseLeave={() => setDisplayProjects(false)}

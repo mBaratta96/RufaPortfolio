@@ -4,7 +4,7 @@ import { useSpring, animated, config } from "react-spring";
 import classes from "./Header.module.less";
 
 interface HeaderLinkProps {
-	title: string;
+	children: string;
 	route?: string;
 	submenu?: boolean;
 }
@@ -15,7 +15,7 @@ const defaultColor = "#c5c3c600";
 const convertToLink = (s: string) => s.replace(/\s+/g, "").toLowerCase();
 
 const HeaderLink = (props: HeaderLinkProps) => {
-	const { title, route, submenu } = props;
+	const { children: title, route, submenu } = props;
 	const [{ backgroundColor }, setColor] = useSpring(() => ({
 		backgroundColor: defaultColor,
 		config: config.stiff,

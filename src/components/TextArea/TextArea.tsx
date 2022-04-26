@@ -3,7 +3,7 @@ import { animated, SpringValue } from "react-spring";
 import classes from "./TextArea.module.less";
 
 interface TextAreaProps {
-	content: JSX.Element | string;
+	children: JSX.Element | string;
 	className?: string;
 	springStyle?: {
 		opacity: SpringValue<number>;
@@ -12,7 +12,7 @@ interface TextAreaProps {
 }
 
 const TextArea = (props: TextAreaProps) => {
-	const { content, className, springStyle } = props;
+	const { children: content, className, springStyle } = props;
 	const children = (
 		<Fragment>
 			<div className={classes.wrapper}>{content}</div>
