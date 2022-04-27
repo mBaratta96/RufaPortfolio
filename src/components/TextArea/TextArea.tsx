@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { animated, SpringValue } from "react-spring";
 import classes from "./TextArea.module.less";
 
@@ -13,19 +13,14 @@ interface TextAreaProps {
 
 const TextArea = (props: TextAreaProps) => {
 	const { children: content, className, springStyle } = props;
-	const children = (
-		<Fragment>
+	const rootClass = `${className ? className + " " : ""}${classes.root}`;
+	return (
+		<animated.div style={springStyle} className={rootClass}>
 			<div className={classes.wrapper}>{content}</div>
 			<div className={classes.borderLeft} />
 			<div className={classes.borderTop} />
 			<div className={classes.borderRight} />
 			<div className={classes.borderBottom} />
-		</Fragment>
-	);
-	const rootClass = `${className ? className + " " : ""}${classes.root}`;
-	return (
-		<animated.div style={springStyle} className={rootClass}>
-			{children}
 		</animated.div>
 	);
 };
