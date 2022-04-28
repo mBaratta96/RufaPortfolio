@@ -7,7 +7,7 @@ const Header = () => {
 	const projects = displayProjects && (
 		<div className={classes.projects}>
 			<HeaderLink submenu={true}>Caro Amico</HeaderLink>
-			<HeaderLink submenu={true}>WIP</HeaderLink>
+			<HeaderLink submenu={true}>Mirrorland</HeaderLink>
 		</div>
 	);
 	return (
