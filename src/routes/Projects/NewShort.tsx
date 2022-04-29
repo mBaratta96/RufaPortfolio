@@ -55,7 +55,7 @@ const NewShort = () => {
 			content={content}
 			title={
 				<Fragment>
-					Mirrorland - A collection of shot ideas for my new short film. Follow
+					Mirrorland — A collection of shot ideas for my new short film. Follow
 					these links for the complete scripts (
 					<a
 						className={classes.link}

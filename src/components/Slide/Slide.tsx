@@ -10,10 +10,11 @@ interface SlideProps {
 	media: Array<{ slide: JSX.Element; preview: string }>;
 	content: Array<JSX.Element>;
 	title?: string | JSX.Element;
+	subtitle?: string | JSX.Element;
 }
 
 const Slide = (props: SlideProps) => {
-	const { media, content, title } = props;
+	const { media, content, title, subtitle } = props;
 	const [slideSelected, setSlideSelected] = useState<number>(0);
 	const imageTransition = useTransition(slideSelected, {
 		config: config.gentle,
@@ -47,6 +48,7 @@ const Slide = (props: SlideProps) => {
 		<div className={classes.root}>
 			<div className={classes.mainTitle}>
 				<h2>{title ?? "Title goes here"}</h2>
+				<p>{subtitle}</p>
 			</div>
 			{imageTransition((style, item) => {
 				return (

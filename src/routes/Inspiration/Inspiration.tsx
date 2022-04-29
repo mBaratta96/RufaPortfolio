@@ -36,7 +36,7 @@ const images = [
 });
 
 const filmList = _.sortBy(
-	Papa.parse(filmDataString, { header: true }).data as Array<filmDataType>,
+	Papa.parse(filmDataString, { header: true }).data as filmDataType[],
 	["index"]
 ).map((data, index) => (
 	<Fragment key={index}>
