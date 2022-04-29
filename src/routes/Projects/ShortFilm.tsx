@@ -1,7 +1,6 @@
 import React, { useRef, Fragment } from "react";
 import { VideoJsPlayer } from "video.js";
 import VideoJS from "../../components/VideoJS";
-import caroAmico from "./videos/caro_amico_(teaser).mp4";
 import titleImage from "./images/caroAmicoTitle.webp";
 import preview from "./images/preview.png";
 import Slide from "../../components/Slide";
@@ -38,7 +37,6 @@ const content = _.sortBy(
 });
 
 const ShortFilm = () => {
-	console.log(content);
 	const playerRef = useRef<null | VideoJsPlayer>(null);
 
 	const handlePlayerReady = (player: VideoJsPlayer) => {
@@ -54,7 +52,9 @@ const ShortFilm = () => {
 		});
 	};
 
-	const videos = [caroAmico].map((path) => {
+	const videos = [...Array(5).keys()].map((sceneIndex) => {
+		const path = new URL(`./videos/scene${sceneIndex + 1}.mp4`, import.meta.url)
+			.href;
 		const videoJsOptions = {
 			controls: true,
 			responsive: true,

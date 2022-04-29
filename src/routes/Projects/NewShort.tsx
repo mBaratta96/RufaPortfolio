@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { FountainParser, IParserOptions } from "screenplay-js";
-import synopsys from "./fountain/synopsys.fountain?raw";
+import synopsis from "./fountain/synopsis.fountain?raw";
 import scene1Script from "./fountain/scene1.fountain?raw";
 import scene2Script from "./fountain/scene2.fountain?raw";
 import scene3Script from "./fountain/scene3.fountain?raw";
@@ -28,7 +28,7 @@ const parseScript = (scriptString: string) => {
 	);
 };
 
-const content = [synopsys, scene1Script, scene2Script, scene3Script].map(
+const content = [synopsis, scene1Script, scene2Script, scene3Script].map(
 	(scriptString, index) => {
 		const script = parseScript(scriptString);
 		return (
@@ -41,7 +41,7 @@ const content = [synopsys, scene1Script, scene2Script, scene3Script].map(
 	}
 );
 
-const media = ["synopsys", "scene1", "scene2", "scene3"].map((item) => {
+const media = ["synopsis", "scene1", "scene2", "scene3"].map((item) => {
 	return {
 		slide: <img src={new URL(`./images/${item}.webp`, import.meta.url).href} />,
 		preview: new URL(`./images/${item}.webp`, import.meta.url).href,
