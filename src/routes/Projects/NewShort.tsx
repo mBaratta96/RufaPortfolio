@@ -48,36 +48,36 @@ const media = ["synopsis", "scene1", "scene2", "scene3"].map((item) => {
 	};
 });
 
+const title = (
+	<Fragment>
+		Mirrorland — Follow these links for the complete scripts (
+		<a
+			className={classes.link}
+			target="_blank"
+			rel="noreferrer noopener"
+			href="https://drive.google.com/file/d/1ua87R9Hru6LHG-lzxUMEjm09tn4xXE8A/view?usp=sharing"
+		>
+			ITA
+		</a>
+		/
+		<a
+			className={classes.link}
+			target="_blank"
+			rel="noreferrer noopener"
+			href="https://drive.google.com/file/d/1sHXwyvsPBU8TkDXmcrVFqGqJHewbjSqo/view?usp=sharing"
+		>
+			ENG
+		</a>
+		)
+	</Fragment>
+);
+
+const subtitle =
+	"This is a collection of visual ideas for scenes taken from a new short script I wrote. Here, you can find the synopsis, some context for the selected scenes, and the corresponding excerpt of the script.";
+
 const NewShort = () => {
 	return (
-		<Slide
-			media={media}
-			content={content}
-			title={
-				<Fragment>
-					Mirrorland — A collection of shot ideas for my new short film. Follow
-					these links for the complete scripts (
-					<a
-						className={classes.link}
-						target="_blank"
-						rel="noreferrer noopener"
-						href="https://drive.google.com/file/d/1ua87R9Hru6LHG-lzxUMEjm09tn4xXE8A/view?usp=sharing"
-					>
-						ITA
-					</a>
-					/
-					<a
-						className={classes.link}
-						target="_blank"
-						rel="noreferrer noopener"
-						href="https://drive.google.com/file/d/1sHXwyvsPBU8TkDXmcrVFqGqJHewbjSqo/view?usp=sharing"
-					>
-						ENG
-					</a>
-					)
-				</Fragment>
-			}
-		/>
+		<Slide media={media} content={content} title={title} subtitle={subtitle} />
 	);
 };
 
