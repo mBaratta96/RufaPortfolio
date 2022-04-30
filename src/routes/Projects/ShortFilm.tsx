@@ -2,7 +2,7 @@ import React, { useRef, Fragment } from "react";
 import { VideoJsPlayer } from "video.js";
 import VideoJS from "../../components/VideoJS";
 import titleImage from "./images/caroAmicoTitle.webp";
-import preview from "./images/preview.png";
+import synopsis from "./images/synopsisCaroAmico.webp";
 import Slide from "../../components/Slide";
 import classes from "./Projects.module.less";
 import contentString from "./content.csv?raw";
@@ -17,7 +17,7 @@ interface shortFilmType {
 
 const title = {
 	slide: <img src={titleImage}></img>,
-	preview: titleImage,
+	preview: synopsis,
 };
 
 const content = _.sortBy(
@@ -25,7 +25,6 @@ const content = _.sortBy(
 		.data as shortFilmType[],
 	["index"]
 ).map((data, index) => {
-	console.log(data);
 	return (
 		<Fragment key={index}>
 			<h2>{data.title}</h2>
@@ -68,7 +67,10 @@ const ShortFilm = () => {
 		};
 		return {
 			slide: <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />,
-			preview: preview,
+			preview: new URL(
+				`./images/caroAmicoPreview${sceneIndex + 1}.webp`,
+				import.meta.url
+			).href,
 		};
 	});
 	return (
