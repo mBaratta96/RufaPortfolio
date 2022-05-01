@@ -30,11 +30,19 @@ const Slide = (props: SlideProps) => {
 		exitBeforeEnter: false,
 	});
 	const handleArrowPress = (e: KeyboardEvent) => {
-		if (e.code === "ArrowLeft" && slideSelected > 0) {
-			setSlideSelected(slideSelected - 1);
+		if (e.code === "ArrowLeft") {
+			if (slideSelected > 0) {
+				setSlideSelected(slideSelected - 1);
+			} else {
+				setSlideSelected(9);
+			}
 		}
-		if (e.code === "ArrowRight" && slideSelected < 9) {
-			setSlideSelected(slideSelected + 1);
+		if (e.code === "ArrowRight") {
+			if (slideSelected < 9) {
+				setSlideSelected(slideSelected + 1);
+			} else {
+				setSlideSelected(0);
+			}
 		}
 	};
 	useEffect(() => {
