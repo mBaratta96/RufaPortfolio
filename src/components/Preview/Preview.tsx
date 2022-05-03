@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import classes from "./Preview.module.less";
+import classes from "./Preview.module.scss";
 import { useSpring, animated } from "react-spring";
 
 interface previewProps {

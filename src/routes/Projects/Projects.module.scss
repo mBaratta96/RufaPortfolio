@@ -1,4 +1,4 @@
-@import "/src/styles/variables.less";
+@use "/src/styles/variables.scss";
 
 .root {
 	font-family: "Courier New", Courier, monospace;
@@ -17,5 +17,5 @@
 }
 
 .link {
-	color: @text-color;
+	color: variables.$text-color;
 }

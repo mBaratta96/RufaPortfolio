@@ -1,7 +1,7 @@
-@import "../../styles/variables.less";
+@use "/src/styles/variables.scss";
 
 .root {
-	.fadeIn(5s);
+	@include variables.fadeIn(5s);
 	height: 100%;
 }
 

@@ -4,7 +4,7 @@ import synopsis from "./fountain/synopsis.fountain?raw";
 import scene1Script from "./fountain/scene1.fountain?raw";
 import scene2Script from "./fountain/scene2.fountain?raw";
 import scene3Script from "./fountain/scene3.fountain?raw";
-import classes from "./Projects.module.less";
+import classes from "./Projects.module.scss";
 import Slide from "../../components/Slide";
 
 const scriptClasses = [

@@ -1,4 +1,4 @@
-@import "/src/styles/variables.less";
+@use "/src/styles/variables.scss";
 
 .root {
 	display: flex;
@@ -31,7 +31,7 @@
 	&Header {
 		font-size: 1.17em;
 		font-weight: bold;
-		color: @text-color;
+		color: variables.$text-color;
 	}
 
 	&Links {

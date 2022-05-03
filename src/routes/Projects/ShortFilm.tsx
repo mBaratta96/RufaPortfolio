@@ -4,10 +4,10 @@ import VideoJS from "../../components/VideoJS";
 import titleImage from "./images/caroAmicoTitle.webp";
 import synopsis from "./images/synopsisCaroAmico.webp";
 import Slide from "../../components/Slide";
-import classes from "./Projects.module.less";
+import classes from "./Projects.module.scss";
 import contentString from "./content.csv?raw";
 import Papa from "papaparse";
-import _ from "underscore";
+import { sortBy } from "underscore";
 
 interface shortFilmType {
 	index: string;
@@ -20,7 +20,7 @@ const titleSlide = {
 	preview: synopsis,
 };
 
-const content = _.sortBy(
+const content = sortBy(
 	Papa.parse(contentString, { header: true, newline: "\n" })
 		.data as shortFilmType[],
 	["index"]

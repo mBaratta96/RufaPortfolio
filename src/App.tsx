@@ -4,7 +4,7 @@ import Particles from "react-tsparticles";
 import type { Engine, ISourceOptions } from "tsparticles";
 import { loadStarsPreset } from "tsparticles-preset-stars";
 import particlesOptions from "./styles/particleOptions.json";
-import classes from "./App.module.less";
+import classes from "./App.module.scss";
 import RouteContent from "./components/RouteContent";
 
 function App() {

@@ -1,6 +1,6 @@
 import React from "react";
 import { animated, SpringValue } from "react-spring";
-import classes from "./TextArea.module.less";
+import classes from "./TextArea.module.scss";
 
 interface TextAreaProps {
 	children: JSX.Element | string;

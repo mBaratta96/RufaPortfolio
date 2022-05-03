@@ -1,4 +1,4 @@
-@import "/src/styles/variables.less";
+@use "/src/styles/variables.scss";
 
 .root {
 	position: fixed;
@@ -6,11 +6,11 @@
 	padding-left: 50px;
 	width: 100%;
 	flex-wrap: wrap;
-	background-color: @text-area-background-color;
+	background-color: variables.$text-area-background-color;
 	z-index: 9;
 	a {
 		text-decoration: none;
-		color: @text-color;
+		color: variables.$text-color;
 	}
 }
 

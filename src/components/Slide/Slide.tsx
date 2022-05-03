@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Preview from "../Preview";
-import classes from "./Slide.module.less";
+import classes from "./Slide.module.scss";
 import { useTransition, animated, config } from "react-spring";
 import TextArea from "../TextArea";
 
 const translationPercentage = "50%";
 
 interface SlideProps {
-	media: Array<{ slide: JSX.Element; preview: string }>;
-	content: Array<JSX.Element>;
+	media: { slide: JSX.Element; preview: string }[];
+	content: JSX.Element[];
 	title?: string | JSX.Element;
 	subtitle?: string | JSX.Element;
 }
@@ -34,11 +34,11 @@ const Slide = (props: SlideProps) => {
 			if (slideSelected > 0) {
 				setSlideSelected(slideSelected - 1);
 			} else {
-				setSlideSelected(9);
+				setSlideSelected(media.length - 1);
 			}
 		}
 		if (e.code === "ArrowRight") {
-			if (slideSelected < 9) {
+			if (slideSelected < media.length - 1) {
 				setSlideSelected(slideSelected + 1);
 			} else {
 				setSlideSelected(0);

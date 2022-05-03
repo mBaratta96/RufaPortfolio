@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSpring, animated, config } from "react-spring";
-import classes from "./Header.module.less";
+import classes from "./Header.module.scss";
 
 interface HeaderLinkProps {
 	children: string;

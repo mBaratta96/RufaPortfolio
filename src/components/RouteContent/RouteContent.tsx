@@ -2,7 +2,7 @@ import React from "react";
 import Home from "../../routes/Home";
 import Projects from "../../routes/Projects";
 import { Routes, Route } from "react-router-dom";
-import classes from "./RouteContent.module.less";
+import classes from "./RouteContent.module.scss";
 import Inspiration from "../../routes/Inspiration";
 
 const RouteContent = () => {

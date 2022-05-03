@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import classes from "./Header.module.less";
+import classes from "./Header.module.scss";
 import HeaderLink from "./HeaderLink";
 
 const Header = () => {
