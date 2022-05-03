@@ -50,23 +50,23 @@ const media = ["synopsis", "scene1", "scene2", "scene3"].map((item) => {
 
 const title = (
 	<Fragment>
-		Mirrorland — Follow these links for the complete scripts (
+		Mirrorland — Click on the following links for the complete scripts (Italian{" "}
 		<a
 			className={classes.link}
 			target="_blank"
 			rel="noreferrer noopener"
 			href="https://drive.google.com/file/d/1ua87R9Hru6LHG-lzxUMEjm09tn4xXE8A/view?usp=sharing"
 		>
-			ITA
-		</a>
-		/
+			here
+		</a>{" "}
+		/ English{" "}
 		<a
 			className={classes.link}
 			target="_blank"
 			rel="noreferrer noopener"
 			href="https://drive.google.com/file/d/1sHXwyvsPBU8TkDXmcrVFqGqJHewbjSqo/view?usp=sharing"
 		>
-			ENG
+			here
 		</a>
 		)
 	</Fragment>

@@ -36,7 +36,11 @@ const Home = () => {
 			<p style={{ textAlign: "center", fontStyle: "italic" }}>
 				I have a sentimental inclination towards hope - Orson Welles
 			</p>
-			<div className={classes.textLinks}>{links}</div>
+			<div className={classes.textLinks}>
+				{links[0]}
+				<h2 style={{ textAlign: "center" }}>My Projects</h2>
+				{[links[1], links[2]]}
+			</div>
 			<div className={classes.contact}>
 				<div className={classes.social}>
 					<a href="https://github.com/mBaratta96">
