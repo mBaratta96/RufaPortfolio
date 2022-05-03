@@ -1,11 +1,19 @@
 import React, { Fragment } from "react";
 import { FountainParser, IParserOptions } from "screenplay-js";
-import synopsis from "./fountain/synopsis.fountain?raw";
 import scene1Script from "./fountain/scene1.fountain?raw";
 import scene2Script from "./fountain/scene2.fountain?raw";
 import scene3Script from "./fountain/scene3.fountain?raw";
 import classes from "./Projects.module.scss";
 import Slide from "../../components/Slide";
+import { parse } from "papaparse";
+import { sortBy } from "underscore";
+import contentString from "./fountain/content.csv?raw";
+
+interface newShortType {
+	index: string;
+	title?: string;
+	description: string;
+}
 
 const scriptClasses = [
 	"scene-heading",
@@ -28,18 +36,31 @@ const parseScript = (scriptString: string) => {
 	);
 };
 
-const content = [synopsis, scene1Script, scene2Script, scene3Script].map(
+const scripts = [scene1Script, scene2Script, scene3Script].map(
 	(scriptString, index) => {
 		const script = parseScript(scriptString);
 		return (
 			<div
 				key={index}
-				className={classes.root}
+				className={classes.script}
 				dangerouslySetInnerHTML={{ __html: script }}
 			></div>
 		);
 	}
 );
+
+const content = sortBy(
+	parse(contentString, { header: true }).data as newShortType[],
+	["index"]
+).map((data, index) => (
+	<div key={index}>
+		<h2>{data.title}</h2>
+		{data.description.split("\\n").map((str, index) => (
+			<p key={index} dangerouslySetInnerHTML={{ __html: str }} />
+		))}
+		{index > 0 ? scripts[index - 1] : ""}
+	</div>
+));
 
 const media = ["synopsis", "scene1", "scene2", "scene3"].map((item) => {
 	return {

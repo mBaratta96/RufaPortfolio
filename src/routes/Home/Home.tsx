@@ -3,7 +3,7 @@ import { FiGithub, FiLinkedin, FiInstagram } from "react-icons/fi";
 import classes from "./Home.module.scss";
 import TextArea from "../../components/TextArea";
 import { Link } from "react-router-dom";
-import Papa from "papaparse";
+import { parse } from "papaparse";
 import contentString from "./content.csv?raw";
 import { sortBy } from "underscore";
 
@@ -15,7 +15,7 @@ interface contentType {
 }
 
 const links = sortBy(
-	Papa.parse(contentString, { header: true }).data as contentType[],
+	parse(contentString, { header: true }).data as contentType[],
 	["index"]
 ).map((row, index) => (
 	<p key={index}>

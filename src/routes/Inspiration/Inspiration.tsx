@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Slide from "../../components/Slide";
 import filmDataString from "./content.csv?raw";
-import Papa from "papaparse";
+import { parse } from "papaparse";
 import { sortBy } from "underscore";
 
 interface filmDataType {
@@ -36,7 +36,7 @@ const images = [
 });
 
 const filmList = sortBy(
-	Papa.parse(filmDataString, { header: true }).data as filmDataType[],
+	parse(filmDataString, { header: true }).data as filmDataType[],
 	["index"]
 ).map((data, index) => (
 	<Fragment key={index}>

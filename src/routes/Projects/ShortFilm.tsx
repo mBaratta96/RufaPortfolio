@@ -6,7 +6,7 @@ import synopsis from "./images/synopsisCaroAmico.webp";
 import Slide from "../../components/Slide";
 import classes from "./Projects.module.scss";
 import contentString from "./content.csv?raw";
-import Papa from "papaparse";
+import { parse } from "papaparse";
 import { sortBy } from "underscore";
 
 interface shortFilmType {
@@ -23,8 +23,7 @@ const titleSlide = {
 };
 
 const content = sortBy(
-	Papa.parse(contentString, { header: true, newline: "\n" })
-		.data as shortFilmType[],
+	parse(contentString, { header: true, newline: "\n" }).data as shortFilmType[],
 	["index"]
 ).map((data, index) => {
 	return (
