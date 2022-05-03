@@ -15,7 +15,7 @@ interface contentType {
 }
 
 const links = sortBy(
-	Papa.parse(contentString, { header: true }).data as Array<contentType>,
+	Papa.parse(contentString, { header: true }).data as contentType[],
 	["index"]
 ).map((row, index) => (
 	<p key={index}>

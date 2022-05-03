@@ -15,6 +15,8 @@ interface shortFilmType {
 	description: string;
 }
 
+const sceneNumber = 5;
+
 const titleSlide = {
 	slide: <img src={titleImage}></img>,
 	preview: synopsis,
@@ -74,7 +76,7 @@ const ShortFilm = () => {
 		playerRef.current = player;
 	};
 
-	const videos = [...Array(5).keys()].map((sceneIndex) => {
+	const videos = [...Array(sceneNumber).keys()].map((sceneIndex) => {
 		const path = new URL(`./videos/scene${sceneIndex + 1}.mp4`, import.meta.url)
 			.href;
 		const videoJsOptions = {

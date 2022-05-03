@@ -4,7 +4,7 @@ import { useSpring, animated } from "react-spring";
 
 interface previewProps {
 	setSlide: React.Dispatch<React.SetStateAction<number>>;
-	children: Array<string>;
+	children: string[];
 }
 
 const maxNumItems = 10;
