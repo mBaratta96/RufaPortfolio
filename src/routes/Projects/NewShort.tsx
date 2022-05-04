@@ -56,7 +56,12 @@ const content = sortBy(
 	<div key={index}>
 		<h2>{data.title}</h2>
 		{data.description.split("\\n").map((str, index) => (
-			<p key={index} dangerouslySetInnerHTML={{ __html: str }} />
+			<p
+				key={index}
+				dangerouslySetInnerHTML={{
+					__html: str.replaceAll("classes.link", classes.link),
+				}}
+			/>
 		))}
 		{index > 0 ? scripts[index - 1] : ""}
 	</div>
