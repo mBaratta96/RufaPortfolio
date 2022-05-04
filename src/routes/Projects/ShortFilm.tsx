@@ -1,5 +1,4 @@
-import React, { useRef, Fragment } from "react";
-import { VideoJsPlayer } from "video.js";
+import React, { Fragment } from "react";
 import VideoJS from "../../components/VideoJS";
 import titleImage from "./images/caroAmicoTitle.webp";
 import synopsis from "./images/synopsisCaroAmico.webp";
@@ -68,35 +67,30 @@ const subtitle = (
 	</Fragment>
 );
 
-const ShortFilm = () => {
-	const playerRef = useRef<null | VideoJsPlayer>(null);
-
-	const handlePlayerReady = (player: VideoJsPlayer) => {
-		playerRef.current = player;
+const videos = [...Array(sceneNumber).keys()].map((sceneIndex) => {
+	const path = new URL(`./videos/scene${sceneIndex + 1}.mp4`, import.meta.url)
+		.href;
+	const videoJsOptions = {
+		controls: true,
+		responsive: true,
+		fill: true,
+		sources: [
+			{
+				src: path,
+				type: "video/mp4",
+			},
+		],
 	};
+	return {
+		slide: <VideoJS options={videoJsOptions} />,
+		preview: new URL(
+			`./images/caroAmicoPreview${sceneIndex + 1}.webp`,
+			import.meta.url
+		).href,
+	};
+});
 
-	const videos = [...Array(sceneNumber).keys()].map((sceneIndex) => {
-		const path = new URL(`./videos/scene${sceneIndex + 1}.mp4`, import.meta.url)
-			.href;
-		const videoJsOptions = {
-			controls: true,
-			responsive: true,
-			fill: true,
-			sources: [
-				{
-					src: path,
-					type: "video/mp4",
-				},
-			],
-		};
-		return {
-			slide: <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />,
-			preview: new URL(
-				`./images/caroAmicoPreview${sceneIndex + 1}.webp`,
-				import.meta.url
-			).href,
-		};
-	});
+const ShortFilm = () => {
 	return (
 		<Fragment>
 			<Slide

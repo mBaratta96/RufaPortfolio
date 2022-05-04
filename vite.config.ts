@@ -13,5 +13,9 @@ export default defineConfig((configEnv) => {
 					: "[hash:base64:5]",
 			},
 		},
+		build: {
+			chunkSizeWarningLimit: 1600,
+			target: "es2020",
+		},
 	};
 });

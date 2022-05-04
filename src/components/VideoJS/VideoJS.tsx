@@ -4,13 +4,12 @@ import "video.js/dist/video-js.css";
 
 interface VideoJsProps {
 	options: VideoJsPlayerOptions;
-	onReady: (player: VideoJsPlayer) => void;
 }
 
 const VideoJS = (props: VideoJsProps) => {
 	const videoRef = useRef(null);
 	const playerRef = useRef<null | VideoJsPlayer>(null);
-	const { options, onReady } = props;
+	const { options } = props;
 
 	useEffect(() => {
 		if (!playerRef.current) {
@@ -20,10 +19,7 @@ const VideoJS = (props: VideoJsProps) => {
 				return;
 			}
 
-			const player = (playerRef.current = videojs(videoElement, options, () => {
-				console.log("player is ready");
-				onReady && onReady(player);
-			}));
+			playerRef.current = videojs(videoElement, options);
 		} else {
 			const player = playerRef.current;
 			if (options.autoplay) {
