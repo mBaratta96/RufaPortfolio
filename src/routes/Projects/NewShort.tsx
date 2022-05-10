@@ -27,8 +27,6 @@ const parseScript = (scriptString: string) => {
 	const script = FountainParser.parse(scriptString, {
 		script_html: true,
 	} as IParserOptions).script_html as string;
-	console.log("SCRIPT");
-	console.log(script);
 	return scriptClasses.reduce(
 		(previous, current) =>
 			classes[current]
