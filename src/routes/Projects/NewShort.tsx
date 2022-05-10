@@ -43,11 +43,14 @@ const scripts = [scene1Script, scene2Script, scene3Script].map(
 		const script = parseScript(scriptString);
 		const tempDiv = document.createElement("div");
 		tempDiv.innerHTML = script;
-		const sceneHeading = tempDiv.querySelector(".scene-heading") as HTMLElement;
-		sceneHeading.innerText =
-			sceneHeading.getAttribute("data-scene-heading-index") +
-			". " +
-			sceneHeading.innerHTML;
+		const sceneHeadings = tempDiv.querySelectorAll(".scene-heading");
+		sceneHeadings.forEach(
+			(element) =>
+				(element.textContent =
+					element.getAttribute("data-scene-heading-index") +
+					". " +
+					element.textContent)
+		);
 		return (
 			<div
 				key={index}
