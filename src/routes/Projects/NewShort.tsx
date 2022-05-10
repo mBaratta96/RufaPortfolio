@@ -27,6 +27,8 @@ const parseScript = (scriptString: string) => {
 	const script = FountainParser.parse(scriptString, {
 		script_html: true,
 	} as IParserOptions).script_html as string;
+	console.log("SCRIPT");
+	console.log(script);
 	return scriptClasses.reduce(
 		(previous, current) =>
 			classes[current]
@@ -39,11 +41,18 @@ const parseScript = (scriptString: string) => {
 const scripts = [scene1Script, scene2Script, scene3Script].map(
 	(scriptString, index) => {
 		const script = parseScript(scriptString);
+		const tempDiv = document.createElement("div");
+		tempDiv.innerHTML = script;
+		const sceneHeading = tempDiv.querySelector(".scene-heading") as HTMLElement;
+		sceneHeading.innerText =
+			sceneHeading.getAttribute("data-scene-heading-index") +
+			". " +
+			sceneHeading.innerHTML;
 		return (
 			<div
 				key={index}
 				className={classes.script}
-				dangerouslySetInnerHTML={{ __html: script }}
+				dangerouslySetInnerHTML={{ __html: tempDiv.innerHTML }}
 			></div>
 		);
 	}
@@ -52,20 +61,23 @@ const scripts = [scene1Script, scene2Script, scene3Script].map(
 const content = sortBy(
 	parse(contentString, { header: true }).data as newShortType[],
 	["index"]
-).map((data, index) => (
-	<div key={index}>
-		<h2>{data.title}</h2>
-		{data.description.split("\\n").map((str, index) => (
-			<p
-				key={index}
-				dangerouslySetInnerHTML={{
-					__html: str.replaceAll("classes.link", classes.link),
-				}}
-			/>
-		))}
-		{index > 0 ? scripts[index - 1] : ""}
-	</div>
-));
+).map((data, index) => {
+	const sceneDescription = data.description.split("\\n").map((str, index) => (
+		<p
+			key={index}
+			dangerouslySetInnerHTML={{
+				__html: str.replaceAll("classes.link", classes.link),
+			}}
+		/>
+	));
+	return (
+		<div key={index}>
+			<h2>{data.title}</h2>
+			{sceneDescription}
+			{index > 0 ? scripts[index - 1] : ""}
+		</div>
+	);
+});
 
 const media = ["synopsis", "scene1", "scene2", "scene3"].map((item) => {
 	return {
