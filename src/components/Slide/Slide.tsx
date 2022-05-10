@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import Preview from "../Preview";
 import classes from "./Slide.module.scss";
 import { useTransition, animated, config } from "react-spring";
@@ -28,6 +28,7 @@ const Slide = (props: SlideProps) => {
 			transform: `translate3d(${translationPercentage}, 0px, 0px)`,
 		},
 		exitBeforeEnter: false,
+		delay: 200,
 	});
 	const handleArrowPress = (e: KeyboardEvent) => {
 		if (e.code === "ArrowLeft") {
@@ -51,7 +52,7 @@ const Slide = (props: SlideProps) => {
 			window.removeEventListener("keydown", handleArrowPress);
 		};
 	});
-
+	const AnimatedTextArea = animated(TextArea);
 	return (
 		<div className={classes.root}>
 			<div className={classes.mainTitle}>
@@ -61,18 +62,14 @@ const Slide = (props: SlideProps) => {
 			{imageTransition((style, item) => {
 				return (
 					item == slideSelected && (
-						<animated.div className={classes.mainImage} style={style}>
-							{media[slideSelected].slide}
-						</animated.div>
-					)
-				);
-			})}
-			{imageTransition((style, item) => {
-				return (
-					item == slideSelected && (
-						<TextArea springStyle={style} className={classes.mainText}>
-							{content[slideSelected]}
-						</TextArea>
+						<Fragment>
+							<animated.div className={classes.mainImage} style={style}>
+								{media[slideSelected].slide}
+							</animated.div>
+							<AnimatedTextArea style={style} className={classes.mainText}>
+								{content[slideSelected]}
+							</AnimatedTextArea>
+						</Fragment>
 					)
 				);
 			})}
