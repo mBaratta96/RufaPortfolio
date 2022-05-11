@@ -13,6 +13,8 @@ interface SlideProps {
 	subtitle?: string | JSX.Element;
 }
 
+const AnimatedTextArea = animated(TextArea);
+
 const Slide = (props: SlideProps) => {
 	const { media, content, title, subtitle } = props;
 	const [slideSelected, setSlideSelected] = useState<number>(0);
@@ -52,7 +54,6 @@ const Slide = (props: SlideProps) => {
 			window.removeEventListener("keydown", handleArrowPress);
 		};
 	});
-	const AnimatedTextArea = animated(TextArea);
 	return (
 		<div className={classes.root}>
 			<div className={classes.mainTitle}>
