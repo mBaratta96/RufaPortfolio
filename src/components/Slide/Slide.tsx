@@ -1,11 +1,10 @@
-import React, { useState, useEffect, Fragment, lazy, Suspense } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import classes from "./Slide.module.scss";
 import { useTransition, animated, config } from "react-spring";
 import TextArea from "../TextArea";
-import { ImSpinner2 } from "react-icons/im";
+import Preview from "../Preview";
 
 const translationPercentage = "50%";
-const Preview = lazy(() => import("../Preview"));
 
 interface SlideProps {
 	media: { slide: JSX.Element; preview: string }[];
@@ -75,17 +74,9 @@ const Slide = (props: SlideProps) => {
 					)
 				);
 			})}
-			<Suspense
-				fallback={
-					<div>
-						<ImSpinner2 size="2em" />
-					</div>
-				}
-			>
-				<Preview setSlide={setSlideSelected}>
-					{media.map((image) => image.preview)}
-				</Preview>
-			</Suspense>
+			<Preview setSlide={setSlideSelected}>
+				{media.map((image) => image.preview)}
+			</Preview>
 		</div>
 	);
 };
